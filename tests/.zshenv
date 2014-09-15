@@ -42,7 +42,7 @@ echo 'alias unsourced-alias="echo unsourced-alias"' > "$PLUGIN_DIR2"/aliases.zsh
     pg2 commit -m 'Initial commit'
 } > /dev/null
 
-#  test plugin.
+# Another test prezto style plugin.
 
 export PLUGIN_DIR3="$PWD/test-plugin3"
 mkdir "$PLUGIN_DIR3"
@@ -59,3 +59,21 @@ echo 'alias unsourced-alias3="echo unsourced-alias3"' > "$PLUGIN_DIR3"/aliases.z
     pg3 add .
     pg3 commit -m 'Initial commit'
 } > /dev/null
+
+# Another test oh-my-zsy style plugin.
+
+export PLUGIN_DIR4="$PWD/test-plugin4"
+mkdir "$PLUGIN_DIR4"
+
+# A wrapper function over `git` to work with the test plugin repo.
+alias pg4='git --git-dir "$PLUGIN_DIR4/.git" --work-tree "$PLUGIN_DIR4"'
+
+echo 'alias hehe4="echo hehe4"' > "$PLUGIN_DIR4"/test4.plugin.zsh
+echo 'alias unsourced-alias4="echo unsourced-alias4"' > "$PLUGIN_DIR4"/aliases.zsh
+
+{
+    pg4 init
+    pg4 add .
+    pg4 commit -m 'Initial commit'
+} > /dev/null
+
