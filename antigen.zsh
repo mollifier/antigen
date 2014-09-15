@@ -277,7 +277,12 @@ antigen-revert () {
         # Source the plugin script.
         # FIXME: I don't know. Looks very very ugly. Needs a better
         # implementation once tests are ready.
+        local script
         local script_loc="$(print -l "$location/"*.plugin.zsh(N-.) | head -n1)"
+        local -a scripts_zsh
+        scripts_zsh=( "$location/"*.zsh(N-.) )
+        local -a scripts_sh
+        scripts_sh=( "$location/"*.sh(N-.) )
 
         if [[ -f "$script_loc" ]]; then
             # If we have a `*.plugin.zsh`, source it.
@@ -294,15 +299,19 @@ antigen-revert () {
                 source "$location/init.zsh"
             fi
 
-        elif ls "$location" | grep -l '\.zsh$' &> /dev/null; then
+        elif [[ $#scripts_zsh -gt 0 ]]; then
             # If there is no `*.plugin.zsh` file, source *all* the `*.zsh`
             # files.
-            for script ($location/*.zsh(N)) source "$script"
+            for script in $scripts_zsh; do
+                source "$script"
+            done
 
-        elif ls "$location" | grep -l '\.sh$' &> /dev/null; then
+        elif [[ $#scripts_sh -gt 0 ]]; then
             # If there are no `*.zsh` files either, we look for and source any
             # `*.sh` files instead.
-            for script ($location/*.sh(N)) source "$script"
+            for script in $scripts_sh; do
+                source "$script"
+            done
 
         fi
 
