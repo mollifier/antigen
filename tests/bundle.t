@@ -27,3 +27,15 @@ The alias defined in the other zsh file should not be available.
   $ unsourced-alias
   zsh: command not found: unsourced-alias
   [127]
+
+Load a prezto style module. Should only source the `init.zsh` present in the
+module.
+
+  $ antigen-bundle $PLUGIN_DIR3 &> /dev/null
+  $ hehe3
+  hehe3
+
+  $ unsourced-alias3
+  zsh: command not found: unsourced-alias3
+  [127]
+

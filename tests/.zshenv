@@ -41,3 +41,21 @@ echo 'alias unsourced-alias="echo unsourced-alias"' > "$PLUGIN_DIR2"/aliases.zsh
     pg2 add .
     pg2 commit -m 'Initial commit'
 } > /dev/null
+
+#  test plugin.
+
+export PLUGIN_DIR3="$PWD/test-plugin3"
+mkdir "$PLUGIN_DIR3"
+
+# A wrapper function over `git` to work with the test plugin repo.
+alias pg3='git --git-dir "$PLUGIN_DIR3/.git" --work-tree "$PLUGIN_DIR3"'
+
+echo 'alias hehe3="echo hehe3"' > "$PLUGIN_DIR3"/main.zsh
+ln -s "$PLUGIN_DIR3"/main.zsh "$PLUGIN_DIR3"/init.zsh
+echo 'alias unsourced-alias3="echo unsourced-alias3"' > "$PLUGIN_DIR3"/aliases.zsh
+
+{
+    pg3 init
+    pg3 add .
+    pg3 commit -m 'Initial commit'
+} > /dev/null
