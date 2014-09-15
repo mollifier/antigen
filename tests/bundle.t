@@ -41,7 +41,7 @@ The alias defined in the other zsh file should not be available.
   zsh: command not found: unsourced-alias3
   [127]
 
-Load a oh-my-zsh style module. Should only source the `*.plugin.zsh` present in the
+Load an oh-my-zsh style module. Should only source the `*.plugin.zsh` present in the
 module.
 
   $ antigen-bundle $PLUGIN_DIR4 &> /dev/null
@@ -52,5 +52,18 @@ The alias defined in the other zsh file should not be available.
 
   $ unsourced-alias4
   zsh: command not found: unsourced-alias4
+  [127]
+
+Load an oh-my-zsh style module. Should only source the `*.plugin.zsh` symbolic link.
+module.
+
+  $ antigen-bundle $PLUGIN_DIR5 &> /dev/null
+  $ hehe5
+  hehe5
+
+The alias defined in the other zsh file should not be available.
+
+  $ unsourced-alias5
+  zsh: command not found: unsourced-alias5
   [127]
 
