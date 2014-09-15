@@ -81,3 +81,11 @@ The alias defined in the other sh file should not be available.
   zsh: command not found: unsourced-alias6
   [127]
 
+Load sh module. Should source all `*.sh` files present in the module.
+
+  $ antigen-bundle $PLUGIN_DIR7 &> /dev/null
+  $ hehe7
+  hehe7
+  $ sourced-alias7
+  sourced-alias7
+
