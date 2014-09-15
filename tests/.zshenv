@@ -130,3 +130,19 @@ echo 'alias sourced-alias7="echo sourced-alias7"' > "$PLUGIN_DIR7"/aliases.sh
     pg7 commit -m 'Initial commit'
 } > /dev/null
 
+# Another test plugin.
+
+export PLUGIN_DIR8="$PWD/test-plugin8"
+mkdir "$PLUGIN_DIR8"
+
+# A wrapper function over `git` to work with the test plugin repo.
+alias pg8='git --git-dir "$PLUGIN_DIR8/.git" --work-tree "$PLUGIN_DIR8"'
+
+echo 'alias unsourced-alias8="echo unsourced-alias8"' > "$PLUGIN_DIR8"/aliases
+
+{
+    pg8 init
+    pg8 add .
+    pg8 commit -m 'Initial commit'
+} > /dev/null
+

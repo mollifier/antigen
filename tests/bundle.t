@@ -89,3 +89,10 @@ Load sh module. Should source all `*.sh` files present in the module.
   $ sourced-alias7
   sourced-alias7
 
+Load not zsh module. Should not source any files present in the module.
+
+  $ antigen-bundle $PLUGIN_DIR8 &> /dev/null
+  $ unsourced-alias8
+  zsh: command not found: unsourced-alias8
+  [127]
+
