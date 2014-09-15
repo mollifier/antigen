@@ -28,8 +28,8 @@ The alias defined in the other zsh file should not be available.
   zsh: command not found: unsourced-alias
   [127]
 
-Load a prezto style module. Should only source the `init.zsh` symbolic link.
-module.
+Load a prezto style module. Should only source the `init.zsh` symbolic link
+present in the module.
 
   $ antigen-bundle $PLUGIN_DIR3 &> /dev/null
   $ hehe3
@@ -54,8 +54,8 @@ The alias defined in the other zsh file should not be available.
   zsh: command not found: unsourced-alias4
   [127]
 
-Load an oh-my-zsh style module. Should only source the `*.plugin.zsh` symbolic link.
-module.
+Load an oh-my-zsh style module. Should only source the `*.plugin.zsh` symbolic link
+present in the module.
 
   $ antigen-bundle $PLUGIN_DIR5 &> /dev/null
   $ hehe5
@@ -65,5 +65,19 @@ The alias defined in the other zsh file should not be available.
 
   $ unsourced-alias5
   zsh: command not found: unsourced-alias5
+  [127]
+
+Load zsh module. Should source all `*.zsh` files present in the module.
+
+  $ antigen-bundle $PLUGIN_DIR6 &> /dev/null
+  $ hehe6
+  hehe6
+  $ sourced-alias6
+  sourced-alias6
+
+The alias defined in the other sh file should not be available.
+
+  $ unsourced-alias6
+  zsh: command not found: unsourced-alias6
   [127]
 
