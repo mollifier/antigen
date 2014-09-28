@@ -278,7 +278,7 @@ antigen-revert () {
         # FIXME: I don't know. Looks very very ugly. Needs a better
         # implementation once tests are ready.
         local script
-        local script_loc="$(print -l "$location/"*.plugin.zsh(N-.) | head -n1)"
+        local script_loc="$(builtin print -l "$location/"*.plugin.zsh(N-.) | head -n1)"
         local -a scripts_zsh
         scripts_zsh=( "$location/"*.zsh(N-.) )
         local -a scripts_sh
@@ -350,7 +350,7 @@ antigen-cleanup () {
         force=true
     fi
 
-    if [[ ! -d "$ADOTDIR/repos" || -z "$(print -l "$ADOTDIR/repos/"*(N))" ]]; then
+    if [[ ! -d "$ADOTDIR/repos" || -z "$(builtin print -l "$ADOTDIR/repos/"*(N))" ]]; then
         echo "You don't have any bundles."
         return 0
     fi
@@ -363,7 +363,7 @@ antigen-cleanup () {
                 -antigen-get-clone-dir "$line"
             done |
             sort -u) \
-        <(print -l "$ADOTDIR/repos/"*(N) | sort -u))"
+        <(builtin print -l "$ADOTDIR/repos/"*(N) | sort -u))"
 
     if [[ -z $unused_clones ]]; then
         echo "You don't have any unidentified bundles."
